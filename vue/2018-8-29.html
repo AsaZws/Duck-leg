@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=1.0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui">
+    <title>api</title>
+    <script src="js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    
+    <div id="app">
+        <div v-jspang="color" id="demo">
+            {{num}}
+        </div>
+        <div>
+            <button @click="add">add</button>
+            <button @click="adda">adda</button>
+        </div>
+    </div>
+
+
+    <script>
+        Vue.directive('jspang',function(el,binding,vnode){
+            el.style = 'color:' + binding.value;
+        })
+        var app = new Vue({
+            el: "#app",
+            data: {
+                num: 10,
+                color: 'red'
+            },
+            methods: {
+                add:function () {
+                    this.num++
+                },
+                adda:function () {
+                    this.num--
+                }
+            }
+        })
+        
+
+    </script>
+</body>
+
+</html>
