@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对原有li列表进行排序</title>
+</head>
+<body>
+    <ul id="test">
+        <li class="lang">Scheme</li>
+        <li class="lang">JavaScript</li>
+        <li class="lang">Python</li>
+        <li class="lang">Ruby</li>
+        <li class="lang">Haskell</li>
+    </ul>
+    <button>点击重新排序</button>
+    <script>
+    
+    var oTest = document.getElementById('test');
+    for (var i = 0; i < oTest.children.length; i++) {
+        var c = oTest.children[i].innerHTML;
+        var ss = c.split(",").concat();
+        ss.sort();
+        console.log(ss);
+    }
+
+    </script>
+</body>
+</html>
