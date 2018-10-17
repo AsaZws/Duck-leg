@@ -1,0 +1,171 @@
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>红宝书第六章面向对象</title>
+
+</style>
+</head>
+
+<body>
+
+<script>
+
+	// 理解面向对象
+	// let person = new Object();
+	// person.name = "Nicholas";
+	// person.age = 29;
+	// person.job = "Software Engineer";
+
+	// person.sayName = function () {
+	// 	console.log(this.name);
+	// }
+	// person.sayName();
+
+	// let person = {
+	// 	name: "Nicholas",
+	// 	age: 29,
+	// 	job: "Software Engineer",
+
+	// 	sayName: function () {
+	// 		console.log(this.job);
+	// 	}
+	// }
+	// person.sayName();
+
+	// let person = {};
+	// Object.defineProperty(person, "name", {
+	// 	writable: true,
+	// 	value: "Nicholas"
+	// });
+
+	// console.log(person.name);
+	// person.name = "Greg";
+	// console.log(person.name);
+
+	// let book = {
+	// 	_yuar: 2004,
+	// 	edition: 1
+	// };
+	// Object.defineProperty(book, "year", {
+	// 	get: function () {
+	// 		return this._year;
+	// 	},
+	// 	set: function(newValue) {
+	// 		if (newValue > 2004) {
+	// 			this._tear = newValue;
+	// 			this.edition += newValue - 2004;
+	// 		}
+	// 	}
+	// });
+	// book.year = 2006;
+
+	// let book = {
+	// 	_year: 2004,
+	// 	edition: 1
+	// };
+	// // 定义访问器的旧有方法
+	// book.__defineGetter__("year", function () {
+	// 	return this._year;
+	// });
+	// book.__defineSetter__("year", function(newValue) {
+	// 	if (newValue > 2004) {
+	// 		this._year = newValue;
+	// 		this.edition += newValue - 2004;
+	// 	}
+	// });
+	// book.year = 2005;
+	// console.log(book.edition); 
+
+	// let book = {};
+	// Object.defineProperties(book, {
+	// 	_year: {
+	// 		witable: true,
+	// 		value: 2004
+	// 	},
+	// 	edition: {
+	// 		witable: true,
+	// 		value: 1
+	// 	},
+	// 	year: {
+	// 		get: function () {
+	// 			return this._year;
+	// 		},
+	// 		set: function(newValue) {
+	// 			if(newValue > 2004){
+	// 				this._year = newValue;
+	// 				this.edition += newValue - 2004;
+	// 			}
+	// 		}
+	// 	}
+	// });
+	// book.year = 2005;
+	// console.log(book.edition);
+
+	// let book = {};
+	// Object.defineProperties(book, {
+	// 	_year: {
+	// 		value: 2004
+	// 	},
+	// 	edition: {
+	// 		value: 1
+	// 	},
+	// 	year: {
+	// 		get: function(){
+	// 			return this._year;
+	// 		},
+	// 		set: function(newValue){
+	// 			if(newValue > 2004) {
+	// 				this._year = newValue;
+	// 				this.edition += newValue - 2004;
+	// 			}
+	// 		}
+	// 	}
+	// });
+
+	// let descriptor = Object.getOwnPropertyDescriptor(book, "_year");
+	// console.log(descriptor.value); // 2004
+	// console.log(descriptor.configurable);  // false
+
+	// function createPerson(name, age, job) {
+	// 	let o = new Object();
+	// 	o.name = name;
+	// 	o.age = age;
+	// 	o.job = job;
+	// 	o.sayName = function(){
+	// 		console.log(this.name);
+	// 	};
+	// 	return o;
+	// }
+	// let person1 = createPerson("Nicholas", 29, "Software Engineer");
+	// console.log(person1.job);
+
+	// function Person(name, age, job){
+	// 	this.name = name;
+	// 	this.age = age;
+	// 	this.job = job;
+	// 	this.sayName = function(){
+	// 		console.log(this.name);
+	// 	};
+	// }
+	// let person1 = new Person("Nicholas", 29, "Software Engineer");
+	// let person2 = new Person("Greg", 27, "Doctor");
+	// console.log(person1.age);
+	// console.log(person2.age);
+	// console.log(person1.constructor == person2.constructor);
+
+	// function Person(){};
+	// Person.prototype.name = "Nicholas";
+	// Person.prototype.age = 29;
+	// Person.prototype.job = "Software Engineer";
+	// Person.prototype.sayName = function(){
+	// 	console.log(this.name);
+	// };
+	// let person1 = new Person();
+	// person1.sayName();
+	// let person2 = new Person();
+	// person2.sayName();
+
+</script>
+
+</body>
+</html>

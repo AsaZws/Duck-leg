@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js双向绑定和方法学习</title>
+</head>
+<body>
+		<input type="text" id="div" />
+		<input type="button" id="btn" value="点我有惊喜" />
+		<div id="div1"></div>
+		
+	<script>
+	
+	(function(window, document) {
+		var oDiv = document.getElementById('div');
+		var oDiv1 = document.getElementById('div1');
+		var oBtn = document.getElementById('btn');
+		oBtn.addEventListener('click', function (e) {
+			var count = oDiv.value - 0;  // 判断为数字
+			count = parseInt(count) + 1;  // 点击+1
+			oDiv.value = count;  // 双向绑定
+			oDiv1.innerHTML = oDiv.value; // 双向绑定
+		})
+		document.onkeyup = function(event){
+			oDiv1.innerText = oDiv.value;  // 双向绑定
+			oDiv.value = oDiv1.innerText;  // 双向绑定
+			// alert(ev.keyCode);  //返回键盘的ASCII 码
+		}
+	})(window, document);
+
+	// this问题
+	// var xiaoming = {
+	// 	name: '小明',
+	// 	birth: 1990,
+	// 	age: function () {
+	// 		var that = this;  // 捕获this
+	// 		function getAgeFromBirth() {
+	// 			var y = new Date().getFullYear();
+	// 			return y - that.birth;  // 用捕获的that而不是this
+	// 		}
+	// 		return getAgeFromBirth();
+	// 	}
+	// }
+	// console.log(xiaoming.age()); // 25
+
+	// 改变this的指向问题
+	// function getAge() {
+	// 	var y = new Date().getFullYear();
+	// 	return y - this.birth;
+	// }
+	// var xiaoming = {
+	// 	name: '小明',
+	// 	birth: 1990,
+	// 	age: getAge
+	// };
+	// console.log(xiaoming.age());  // 28
+	// console.log(getAge.apply(xiaoming, []));  // 28
+
+	// 查看函数调用多少次
+	// var count = 0;
+	// var oldParseInt = parseInt;  // 保存原函数
+	// window.parseInt = function () {
+	// 	count += 1;
+	// 	return oldParseInt.apply(null, arguments); // 调用原函数
+	// };
+	// parseInt('10');
+	// console.log('count = ' + count); // 1
+	
+	</script>
+</body>
+</html>

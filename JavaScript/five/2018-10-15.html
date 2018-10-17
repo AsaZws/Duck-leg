@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class继承</title>
+</head>
+<body>
+	<script>
+
+		// 原来的写法
+		// function Student(name) {
+		// 	this.name = name;
+		// }
+
+		// Student.prototype.hello = function () {
+		// 	console.log('Hello,' + this.name + '!');
+		// }
+
+		// class类
+		// class Student {
+		// 	constructor(name) {
+		// 		this.name = name;
+		// 	}
+		// 	hello() {
+		// 		console.log('Hello,' +this.name + '!');
+		// 	}
+		// }
+		// var asa = new Student('周');
+		// asa.hello();
+
+		class PrimaryStudent extends Student {
+			constructor(name, grade) {
+				super(name);  // 记得用super调用父类的构造方法!
+				this.grade = grade;
+			}
+
+			myGrade() {
+				console.log('I am at grade' + this.grade);
+			}
+		}
+	
+	</script>
+</body>
+</html>

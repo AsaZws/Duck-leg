@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建对象</title>
+	<style>
+	
+		body{
+			padding: 0;margin: 0;
+			background-color:#F2F0EA;
+		}
+		#calculator{
+			position: absolute;
+			width: 500px;
+			height: 620px;
+			left: 50%;
+			top: 50%;
+			margin-left: -275px;
+			margin-top: -330px;
+			border: 1px solid #333;
+			padding: 20px;
+			background-color: #2D3047;
+			border-radius: 20px;
+		}
+		#calculator #c_title {
+			margin: auto;
+			height: 80px;
+		}
+		#calculator #c_title h2{
+			text-align: center;
+			font-size: 33px;
+			font-family: "微软雅黑";
+			color: #999;
+			line-height: 30px;
+		}
+		#c_text{
+			width: 500px;
+			margin: auto;
+		}
+		#calculator #c_text #text{
+			padding-right: 10px;
+			width: 488px;
+			height: 50px;
+			font-size: 25px;
+			font-family: "微软雅黑";
+			color: #666666;
+			text-align: right;
+			border: 1px white;
+			border: double 1px;
+			border-radius: 8px;
+		}
+		#calculator #c_value ul{
+			width: 500px;
+			height: 408px;
+			margin: 40px auto;
+			padding: 0;
+		}
+		#calculator #c_value ul li{
+			margin: 10px;
+			list-style: none;
+			float: left;
+			width: 78px;
+			height: 60px;
+			line-height: 60px;
+			text-align: center;
+			background-color: #028090;
+			border: 1px solid #333;
+			border-radius: 8px;
+			font-size: 30px;
+			font-family: "微软雅黑";
+			color: #f2f2f2;
+			box-shadow: 5px 5px 30px rgba(0,0,0,0.4);           
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			-moz-user-select: none;
+		}
+		#calculator #c_value ul li:active{
+			background-color: #999;
+			transition: .1s;
+		}
+		#calculator #c_value ul li:hover{
+			opacity:0.8;
+			cursor:pointer;
+		}
+		#calculator #c_value ul .c_blue{
+			background-color: cornflowerblue;
+			color: #fff;
+		}
+		#calculator #c_value ul .c_yellow{
+			background-color: #f9f900;
+			color: #000;
+		}
+
+	</style>
+</head>
+<body>
+	
+	<div id="calculator">
+		<div id="c_title"><h2>计算器</h2></div>
+		<div id="c_text">
+			<input type="text" id="text" value="0" readonly="readonly" />
+		</div>
+		<div id="c_value">
+			<ul>
+				<li onclick="get(7)">7</li>
+				<li onclick="get(8)">8</li>
+				<li onclick="get(9)">9</li>
+				<li onclick="goBack()" class="c_blue">←</li>
+				<li onclick="clearText()" class="c_blue">C</li>
+				<li onclick="get(4)">4</li>
+				<li onclick="get(5)">5</li>
+				<li onclick="get(6)">6</li>
+				<li onclick="get('*')" class="c_blue">×</li>
+				<li onclick="get('/')" class="c_blue">÷</li>
+				<li onclick="get(1)">1</li>
+				<li onclick="get(2)">2</li>
+				<li onclick="get(3)">3</li>
+				<li onclick="get('+')" class="c_blue">+</li>
+				<li onclick="get('-')" class="c_blue">-</li>
+				<li onclick="get(0)">0</li>
+				<li onclick="get('00')">00</li>
+				<li onclick="get('.')">.</li>
+				<li onclick="get('%')" class="c_blue">%</li>
+				<li onclick="eq()" class="c_yellow">=</li>
+			</ul>
+		</div>
+	</div>
+
+<script>
+
+	var IsClear = false;
+	// var cal = "";
+	// 计算
+	function get(key){
+		var str = document.getElementById("text").value;
+		if(IsClear){
+			str = "0";
+			IsClear = false;
+		}
+		if(str.length < 20){
+			str = (str == "0" ? "" : str);
+			if(str == "" && key == '00'){
+				str = "0";
+			}else{
+				str += key;
+			}
+		}
+		document.getElementById("text").value = str;
+	}
+	// 回删
+	function goBack(){
+		var str = document.getElementById("text").value;
+		str = str.substring(0,str.length-1);
+		if(str=="") str="0";
+		document.getElementById("text").value = str;
+	}
+	// 全部清除
+	function clearText(){
+		document.getElementById("text").value = "0";
+	}
+	// 等于结果
+	function eq(){
+		IsClear = true;
+		var str = document.getElementById("text").value;
+		var result = eval(str)
+		if(result == "Infinity"){
+			result = "输入有误";
+		}
+		document.getElementById("text").value = result;
+		console.log(result);
+	}
+
+</script>
+
+</body>
+</html>

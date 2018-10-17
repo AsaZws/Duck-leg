@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>从数组中随机抽取一个数</title>
+	<style>
+	
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	ul, li {
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+	}
+	.ran {
+		font-size: 40px;
+		/* padding: 40px; */
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		-moz-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-webkit-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		z-index: 200;
+	}
+	.ran li {
+		width: 80px;
+		height: 80px;
+		text-align: center;
+		line-height: 80px;
+		float: left;
+		margin-right: 20px;
+		background: #88AEBF;
+		color: #fff;
+		border-radius: 50%;
+	}
+	.ran .btn {
+		display: inline-block;
+		width: 280px;
+		height: 40px;
+		margin-top: 20px;
+		text-align: center;
+		line-height: 40px;
+		outline: none;
+		background: #59A6D5;
+		color: #fff;
+		cursor: pointer;
+		border: none;
+		font-size: 24px;
+		border-radius: 12px;
+	}
+	.ran span {
+		font-size: 14px;
+	}
+	.ran .oclick {
+		color: #041B2D;
+		font-weight: 600;
+		font-size: 24px;
+	}
+	.ran .freq {
+		color: red;
+		font-weight: 600;
+		font-size: 24px;
+	}
+	
+	</style>
+</head>
+<body>
+	
+	<ul id="ran" class="ran">
+		<li>*</li>
+		<li>*</li>
+		<li>*</li>
+		<a href="#" class="btn" id="btn">点击随机生成</a>
+		<div>
+			<span>你总共点击了</span>
+			<span class="oclick" id="oclick">0</span>
+			<span>次</span>
+		</div>
+		<div>
+			<span>出现“❤️❤️❤️”的次数累计为</span>
+			<span class="freq" id="freq">0</span>
+			<span>次</span>
+		</div>
+	</ul>
+
+<script>
+	// 获取期望字的li节点
+	var oRan = document.getElementById("ran").getElementsByTagName("li");
+	// 获取按钮的id
+	var oBtn = document.getElementById("btn");
+	// 获取记录出现期望字的id
+	var oFreq = document.getElementById("freq");
+	// 获取记录点击次数的id
+	var oOclick = document.getElementById("oclick");
+	// 声明一个随机数组
+	var love = ["黎", "立", "美", "周", "伟", "生", "我", "❤️", "你"];
+	// 向dom节点里面随机添加字体
+	function aclick() {
+		// 产生三个随机数
+		var indexs = Math.floor((Math.random()*love.length));
+		var inde = Math.floor((Math.random()*love.length));
+		var ind = Math.floor((Math.random()*love.length));
+		// 添加节点
+		oRan[0].innerText = love[indexs];
+		oRan[1].innerText = love[inde];
+		oRan[2].innerText = love[ind];
+		// 声明两个数字变量为0
+		var oo = 0;
+		var cc = 0;
+		// 每调用一次函数就自增一次
+		oOclick.innerText = parseInt(oOclick.innerText)+1;
+		// 当出现期望的文字时就记录自增一次
+		if ((oRan[0].innerText === "我" && oRan[1].innerText === "❤️" && oRan[2].innerText === "你")) {
+			oo = parseInt(oFreq.innerText)+1;
+			oFreq.innerText = oo;
+		};
+		// console.log(oFreq.innerText);
+	};
+
+	i = setInterval("aclick()", 1);
+	clearInterval(i);
+	i = null;
+	// 当定时器开启时启动这个函数就关闭定时器，反之则开启
+	function runOrStope() {
+		// 先清除定时器
+		clearInterval(i);
+		if(i) {
+			// clearInterval(i);
+			i = null;
+			oBtn.style.opacity = "0.8";
+		}else {
+			i = setInterval("aclick()", 1);
+			oBtn.style.opacity = 1;
+		}
+		return i;
+	};
+	oBtn.onclick = function () {
+		runOrStope();
+	};
+	// 按下回车键开启和关闭抽奖
+	document.onkeydown = function(event){
+		var e = event || window.event || arguments.callee.caller.arguments[0]; 
+		if(e && e.keyCode==13){
+			runOrStope();
+		}
+	};
+	
+
+</script>
+</body>
+</html>

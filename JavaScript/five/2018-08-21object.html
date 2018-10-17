@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象的选项卡</title>
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	#div1 {
+		background: white;
+		display: block;
+	}
+	#div1 input {
+		background: gray;
+		color: #fff;
+	}
+	div {
+		height: 200px;
+		width: 200px;
+		background: #f2f2f2;
+		display: none;
+	}
+	#div1 input .active {
+		background: #ccc;
+		display: block;
+	}
+	</style>
+</head>
+<body>
+
+	<script>
+	
+	window.onload = function () {
+		new TabSwitch('div1');
+	};
+	function TabSwitch(id){  // 构造函数
+		this.oDiv1 = document.getElementById(id);  // 指当前构造的那个对象
+		this.aBtn = document.getElementsByTagName('input');
+
+		this.aDiv = document.getElementsByTagName('div');  // oDiv1 == aDiv[1]
+
+		var _this = this;  // 保存this对象
+
+		for (var i = 0; i < this.aBtn.length; i++) {
+			this.aBtn[i].index = i;
+			this.aBtn[i].onclick = function () {
+				_this.fnClick(this);  // 这里的this表示aBtn
+			}
+		}
+	}
+
+	TabSwitch.prototype.fnClick = function (oBtn) {
+		for(var j = 0; j < this.aBtn.length; j++) {
+			this.aBtn[j].className = "";
+
+			this.aDiv[j+1].style.display = "none";
+		}
+		oBtn.className = "active";
+		this.aDiv[oBtn.index+1].style.display = "block";
+	};
+
+	</script>
+	<!-- <div id="foo" style="display:block">0</div> -->
+
+	<div id="div1">
+		<input type="button" value="aaa" class="active">
+		<input type="button" value="bbb">
+		<input type="button" value="ccc">
+	</div>
+	<div>aaa</div>
+	<div>bbb</div>
+	<div>ccc</div>
+</body>
+</html>

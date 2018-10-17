@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>抽奖啦</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: #fee8e3;
+		}
+
+		.random {
+			width: 400px;
+			height: 400px;
+			font-weight: bold;
+			margin: 0 auto;
+			text-align: center;
+			border-radius: 100%;
+			background: #fff;
+			border: 10px solid #000;
+			margin-top: 150px;
+			position: relative;
+			font-size: 0;
+		}
+		.random .round1 {
+			width: 140px;
+			height: 140px;
+			background: #000;
+			border-radius: 100%;
+			position: absolute;
+			top: -40px;
+			right: -10px;
+			z-index: -1;
+		}
+		.random .round1 span {
+			display: inline-block;
+			width: 80px;
+			height: 80px;
+			background: rgb(197, 185, 185);
+			border-radius: 100%;
+			margin-top: 30px;
+		}
+		.random .round2 {
+			width: 140px;
+			height: 140px;
+			background: #000;
+			border-radius: 100%;
+			position: absolute;
+			top: -40px;
+			left: -10px;
+			z-index: -1;
+		}
+		.random .round2 span {
+			display: inline-block;
+			width: 80px;
+			height: 80px;
+			background: rgb(197, 185, 185);
+			border-radius: 100%;
+			margin-top: 30px;
+		}
+
+		.random p {
+			line-height: 580px;
+			font-size: 200px;
+			color: #f00;
+		}
+
+		.random .btns {
+			width: 328px;
+			font-size: 0;
+			position: absolute;
+			top: 80px;
+			left: 36px;
+		}
+
+		.btns span {
+			font-family: '微软雅黑';
+			font-size: 14px;
+			line-height: 80px;
+			display: inline-block;
+			width: 100px;
+			height: 80px;
+			cursor: pointer;
+			text-align: center;
+			color: #fff;
+			border: 1px solid #eee;
+			background: #000;
+			margin: 24px;
+		}
+		.btns .btns1 {
+			border-radius: 100%;
+		}
+		.btns .btns2 {
+			border-radius: 100%;
+		}
+
+		.win {
+			width: 660px;
+			margin: 0 auto;
+		}
+
+		.win p {
+			text-align: center;
+			font-size: 48px;
+			color: #333;
+		}
+		.win .first {
+			font-size: 36px;
+			font-weight: 600;
+			color: #333;
+			line-height: 60px;
+		}
+		.win span {
+			color: #f00;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+			timer = null, //定时器
+			flag = 0, //用于键盘事件状态标记
+			oarr = [], // 定义中奖数组
+			ostr; // 定义中奖字符串
+
+		window.onload = function () {
+
+			var play = document.getElementById('play'),
+				stop = document.getElementById('stop');
+
+			// 开始抽奖
+			play.onclick = playFun;
+			stop.onclick = stopFun;
+
+			// 键盘事件
+			document.onkeyup = function (event) {
+				event = event || window.event;
+				if (event.keyCode == 13) {
+					if (flag == 0) {
+						playFun();
+						flag = 1;
+					} else {
+						stopFun();
+						flag = 0;
+						oarr.push(title.innerHTML);
+						// ostr = oarr.join("、");
+						// win.innerHTML = ostr;
+					}
+				}
+			}
+		}
+		// 开始抽奖
+		function playFun() {
+			var title = document.getElementById('title');
+			var play = document.getElementById('play');
+			//   数组去重
+			for (var i = data.length - 1; i >= 0; i--) {
+				a = data[i];
+				for (var j = oarr.length - 1; j >= 0; j--) {
+					b = oarr[j];
+					if (a == b) {
+						data.splice(i, 1);
+						oarr.splice(j, 1);
+						break;
+					}
+				}
+			};
+
+			//每次都先清除上一次的定时器任务，避免抽奖效果累加频率会越来越快
+			clearInterval(timer);
+			timer = setInterval(function () {
+				var random = Math.floor(Math.random() * data.length);
+				title.innerHTML = data[random];
+			}, 10);
+			play.style.background = '#999';
+			// oarr.push(title.innerHTML);
+		}
+		//停止抽奖
+		function stopFun() {
+			clearInterval(timer);
+			var play = document.getElementById('play');
+			var win1 = document.getElementById('win1');
+			var win2 = document.getElementById('win2');
+			var win3 = document.getElementById('win3');
+			var win4 = document.getElementById('win4');
+			play.style.background = '#000';
+
+			oarr.push(title.innerHTML);
+			ostr = oarr.join("、");
+			if (oarr.length < 9) {
+				win4.innerHTML = ostr;
+
+			} else if (oarr.length == 10) {
+				win3.innerHTML = oarr[8];
+
+			} else if (oarr.length == 11) {
+				win2.innerHTML = oarr[9];
+
+			} else if (oarr.length == 12) {
+				win1.innerHTML = oarr[10];
+			};
+		}
+
+	</script>
+	<div class="random">
+		<div>
+			<strong class="round1"></strong>
+			<strong class="round2"></strong>
+		</div>
+		<p id="title" class="title">0</p>
+		<div class="btns">
+			<span id="play" class="btns1">开 始</span>
+			<span id="stop" class="btns2">停 止</span>
+		</div>
+	</div>
+	<div class="win">
+		<p>中奖号码</p>
+		<div class="first">
+			<strong id="prize1">特等奖：</strong><span id="win1"></span>
+		</div>
+		<div class="first">
+			<strong id="prize2">一等奖：</strong><span id="win2"></span>
+		</div>
+		<div class="first">
+			<strong id="prize3">二等奖：</strong><span id="win3"></span>
+		</div>
+		<div class="first">
+			<strong id="prize4">三等奖：</strong><span id="win4"></span>
+		</div>
+	</div>
+</body>
+
+</html>
