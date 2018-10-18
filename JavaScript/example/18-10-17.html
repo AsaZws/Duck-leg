@@ -6,28 +6,32 @@
 </head>
 <body>
     <ul id="test">
-        <li class="lang">Scheme</li>
-        <li class="lang">JavaScript</li>
-        <li class="lang">Python</li>
-        <li class="lang">Ruby</li>
-        <li class="lang">Haskell</li>
+        <li class="lang">DScheme</li>
+        <li class="lang">EBJavaScript</li>
+        <li class="lang">Bython</li>
+        <li class="lang">ARuby</li>
+        <li class="lang">CHaskell</li>
     </ul>
-    <button>点击重新排序</button>
+    <button onclick="_sort(oTest)">点击重新排序</button>
     <script>
     
     var oTest = document.getElementById('test');
-    var arr = [];
-    var list;
-    for (var i = 0; i < oTest.children.length; i++) {
-        arr.push(oTest.children[i].innerHTML);
-        arr.sort();
-    }
-    for (var j = 0; j < arr.length; j++) {
-        list += "<li>"+arr[j]+"</li>";
-    }
-    oTest.innerHTML = list;
-
-    console.log(list);
+    function _sort(ID) {
+        // 声明一个数组
+        var arr = [];
+        // 必须赋值
+        var list = '';
+        // 循环li列表添加到数组进行排序
+        for (var i = 0; i < ID.children.length; i++) {
+            arr.push(oTest.children[i].innerHTML);
+            arr.sort();
+        }
+        // 把排序好的数组添加回li
+        for (var j = 0; j < arr.length; j++) {
+            list += "<li>"+arr[j]+"</li>";
+        }
+        oTest.innerHTML = list;
+    };
 
     </script>
 </body>
