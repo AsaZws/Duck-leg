@@ -16,12 +16,18 @@
     <script>
     
     var oTest = document.getElementById('test');
+    var arr = [];
+    var list;
     for (var i = 0; i < oTest.children.length; i++) {
-        var c = oTest.children[i].innerHTML;
-        var ss = c.split(",").concat();
-        ss.sort();
-        console.log(ss);
+        arr.push(oTest.children[i].innerHTML);
+        arr.sort();
     }
+    for (var j = 0; j < arr.length; j++) {
+        list += "<li>"+arr[j]+"</li>";
+    }
+    oTest.innerHTML = list;
+
+    console.log(list);
 
     </script>
 </body>
