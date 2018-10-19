@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对原有li列表进行删除</title>
+</head>
+<body>
+    <ul id="test">
+        <li class="lang">DScheme</li>
+        <li class="lang">EBJavaScript</li>
+        <li class="lang">Bython</li>
+        <li class="lang">ARuby</li>
+        <li class="lang">CHaskell</li>
+    </ul>
+    <ul id="text">
+    </ul>
+    <button onclick="remove(oTest, oText)">点击删除</button>
+    <script>
+    
+        var oTest = document.getElementById('test');
+        var oText = document.getElementById('text');
+        var oarr = [];
+        var list = '';
+        function remove(ID, ID2) {
+            ID.lastChild.remove();
+            for (var i = 0; i < ID.children.length; i++) {
+                oarr.push(ID.children[i].innerHTML);
+            }
+            oarr.splice(0, oarr.length-1);
+            for (var i = 0; i < oarr.length; i++) {
+                list += "<li>" +oarr[i]+ "</li>";
+            }
+            ID2.innerHTML = list;
+            console.log(oarr);
+        }
+
+    </script>
+</body>
+</html>

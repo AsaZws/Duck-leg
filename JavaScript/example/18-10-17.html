@@ -23,14 +23,14 @@
         var list = '';
         // 循环li列表添加到数组进行排序
         for (var i = 0; i < ID.children.length; i++) {
-            arr.push(oTest.children[i].innerHTML);
+            arr.push(ID.children[i].innerHTML);
             arr.sort();
         }
         // 把排序好的数组添加回li
         for (var j = 0; j < arr.length; j++) {
             list += "<li>"+arr[j]+"</li>";
         }
-        oTest.innerHTML = list;
+        ID.innerHTML = list;
     };
 
     </script>
