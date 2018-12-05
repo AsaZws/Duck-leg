@@ -70,7 +70,7 @@ window.onload = function () {
                 t = 0;
             }
             timer();
-        },1000);
+        },10);
         // 3秒后停止函数
         setTimeout(function () {
             clearInterval(init);
