@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // 箭头函数排序
 // var arr = [10, 20, 1, 2];
@@ -78,36 +78,190 @@ function jspang(first, ...arg){
 }
 jspang(0,1,2,3,4,5,6,7);  // 7
 
-*/
-
-function jspang(first) {
-    for (var _len = arguments.length, arg = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        arg[_key - 1] = arguments[_key];
-    }
-
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-        for (var _iterator = arg[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var val = _step.value;
-
-            console.log(val);
-        }
-    } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-    } finally {
-        try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-                _iterator.return();
-            }
-        } finally {
-            if (_didIteratorError) {
-                throw _iteratorError;
-            }
-        }
+function jspang(first,...arg) {
+    for(let val of arg) {
+        console.log(val);
     }
 }
-jspang(0, 1, 2, 3, 4, 5, 6, 7);
+jspang(0,1,2,3,4,5,6,7);  // 1 2 3 4 5 6 7
+
+*/
+
+/*
+
+@Asa_Zhou
+2018/12/12
+
+字符串模板
+
+let jspang = '技术胖';
+let blog = `非常高兴你能看到这篇文章，我是你的老朋友${jspang}。这节课我们学习字符串模板。`;
+
+数字操作
+
+let a = 1;
+let b = 2;
+let result = `${a+b}`;
+document.write(result);
+
+let a = 11/4;
+console.log(Number.isFinite(a));  // true
+
+console.log(Number.isNaN(NaN));  // true
+
+let a = '9.18';
+console.log(Number.isInteger(a));  // false
+
+数组
+
+let json = {
+    '0': 'jspang',
+    '1': '技术胖',
+    '2': '肥仔',
+    length: 3
+}
+let arr = Array.from(json);
+console.log(arr);  // ["jspang", "技术胖", "肥仔"]
+
+let arr = Array.of(3,4,5,6);
+console.log(arr);  // [3, 4, 5, 6]
+
+let arr = Array.of('技术胖', '技术胖', '肥仔');
+console.log(arr);  // ["技术胖", "技术胖", "肥仔"]
+
+let arr = [1,2,3,4,5,6,7,8,9];
+console.log(arr.find(function(value,index,arr){
+    return value > 8;
+}))  // 9
+
+let arr = [0,1,2,3,4,5,6,7,8,9];
+arr.fill('jspang', 2, 5);
+console.log(arr);  // [0, 1, "jspang", "jspang", "jspang", 5, 6, 7, 8, 9]
+
+let arr = ['jspang', '技术胖', 'pangdiao'];
+for (let item of arr) {
+    console.log(item);
+}  // jspang 技术胖 pangdiao
+
+let arr = ['jspang', '技术胖', 'pangdiao'];
+for (let index of arr.keys()){
+    console.log(index);
+}  // 0 1 2
+
+let arr = ['jspang', '技术胖', 'pangdiao'];
+for (let [index,val] of arr.entries()){
+    console.log(index+ ':' + val);
+}   // 0:jspang 1:技术胖 2:pangdiao
+
+let arr = ['jspang', '技术胖', 'pangdiao'];
+let list = arr.entries();
+console.log(list.next().value);  // [0, "jspang"]
+console.log(list.next().value);  // [0, "jspang"]
+
+function add(a,b=1){
+    return a+b;
+}
+console.log(add(1));  // 2
+
+var add = (a,b=1) => a+b;
+console.log(add(1));  // 2
+
+函数和数组的补漏学习
+
+let json = {
+    a: 'jspang',
+    b: '技术胖',
+}
+function fun({a,b='jspang'}){
+    console.log(a,b);  // jspang 技术胖
+}
+fun(json);
+
+let arr = ['jspang','技术胖','免费教程'];
+function fun(a,b,c) {
+    console.log(a,b,c);  // jspang 技术胖 免费教程
+}
+fun(...arr);
+
+let obj = {
+    a:'jspang',
+    b:'技术胖'
+}
+console.log('a' in obj);  // true
+
+let arr = [,,,,,];
+console.log(arr.length);  // 5
+
+let arr = [,,,,,];
+console.log(0 in arr);  // false
+
+let arr1 = ['jspang', '技术胖'];
+console.log(0 in arr1);  // true
+
+let arr = ['jspang', '技术胖', '前端教程'];
+arr.forEach((val,index)=>console.log(index,val));
+// 0 "jspang"
+// 1 "技术胖"
+// 2 "前端教程"
+
+let arr = ['jipang', '技术胖', '前端教程'];
+arr.filter(x=>console.log(x));  // jipang 技术胖 前端教程
+
+let arr = ['jspang', '技术胖', '前端教程'];
+arr.some(x=>console.log(x));  // jipang 技术胖 前端教程
+
+let arr = ['jspang', '技术胖', '前端教程'];
+console.log(arr.map(x=>'web'));  // ["web", "web", "web"]
+
+let arr = ['jspang', '技术胖', '前端教程'];
+console.log(arr.join('|'));
+console.log(arr.toString());
+
+let name = "japang";
+let skill = "web";
+var obj = {name,skill};
+console.log(obj);  // {name: "japang", skill: "web"}
+
+let key = "skill";
+var obj = {
+    [key]: "web"
+}
+console.log(obj.skill);  // web
+
+var obj = {
+    add:function(a,b) {
+        return a+b;
+    }
+}
+console.log(obj.add(1,2));  // 3
+
+var obj1 = {name: "jspang"};
+var obj2 = {name: "jspang"};
+console.log(obj1.name === obj2.name); // true
+console.log(Object.is(obj1.name,obj2.name)); // true
+
+var a = {a: "jspang"};
+var b = {b: "jspang"};
+var c = {c: "web"};
+
+let d = Object.assign(a,b,c);
+console.log(d);  // {a: "jspang", b: "jspang", c: "web"}
+
+let g = Symbol("jspang");
+console.log(g);  // 红字
+console.log(g.toString()); // 黑字
+
+let obj = {name: "jspang", skill: "web", age: 18};
+for (let item in obj){
+    console.log(obj[item]);  // jspang web 18
+}
+
+*/
+
+var obj = { name: 'jspang', skill: 'web' };
+var age = Symbol();
+obj[age] = 18;
+for (var item in obj) {
+    console.log(obj[item]);
+}
+console.log(obj);
