@@ -1,9 +1,9 @@
 个人的博客零碎以后都写在里面
------------------------------------
+
 ## 项目创建完成之后，一定谨记先pull再进行开发后在push
 
 ### 关于git的一些小操作
-1. [git快捷键](git-method/git.md)
+[1、git快捷键](git-method/git.md)
 
 ### 一些小demo
-1. [一些动画](demo/demo.md)
+[1、一些动画](demo/demo.md)
