@@ -255,8 +255,6 @@ for (let item in obj){
     console.log(obj[item]);  // jspang web 18
 }
 
-*/
-
 let obj = {name: 'jspang', skill: 'web'};
 let age = Symbol();
 obj[age] = 18;
@@ -265,33 +263,95 @@ for (let item in obj) {
 }
 console.log(obj);
 
+@Asa_Zhou
+2018/12/13
+Set()
+
+let setArr = new Set(['jspang', '技术胖', 'web', 'jspang']);
+console.log(setArr);  // {"jspang", "技术胖", "web"}
+
+let setArr = new Set(['jspang', '技术胖', 'web', 'jspang']);
+console.log(setArr);  // {"jspang", "技术胖", "web"}
+setArr.add('前端');
+console.log(setArr);  // {"jspang", "技术胖", "web", "前端"}
+setArr.delete("前端");
+console.log(setArr);  // {"jspang", "技术胖", "web"}
+console.log(setArr.has('jspang'));  // true
+
+let setArr = new Set(['jspang', '技术胖', 'web', 'jspang']);
+for (let item of setArr) {
+    console.log(item);  // jspang 技术胖 web
+}
+console.log(setArr.size);  // 3
+
+setArr.forEach((value)=> console.log(value)); // jspang 技术胖 web
+
+let weakObj = new WeakSet();
+let obj = {a: "jsp", b: "技术胖"};
+weakObj.add(obj);
+console.log(weakObj); // WeakSet {{…}}
+
+let json = {
+    name: "jspang",
+    skill: "web"
+}
+console.log(json.name);  // jspang
+let map = new Map();
+map.set(json, "iam");
+console.log(map);  // Map(1) {{…} => "iam"}
+map.set("jspang", json);
+console.log(map);  // Map(2) {{…} => "iam", "jspang" => {…}}
+
+let map = new Map();
+map.set(json, "iam");
+console.log(map.get(json));  // iam
+console.log(map.size)  // 1
+console.log(map.has("jspang"))  // false
+
+Proxy
+
+var obj = {
+    add:function (val) {
+        return val+10;
+    },
+    name: "I am Jspang"
+};
+console.log(obj.add(100));  // 110
+console.log(obj.name);  // I am Jspang
+
+let pro = new Proxy({
+    add: function (val) {
+        return val + 10;
+    },
+    name: "I am Jspang"
+}, {
+    get:function(target,key,property){
+        console.log("come in Get");  // come in Get
+        return target[key];
+    },
+    set:function(target, key, value, receiver) {
+        console.log(`setting ${key} = ${value}`);  // I am Jspang
+        return target[key] = value;
+    }
+});
+console.log(pro.name); // I am Jspang
+pro.name = "技术胖";
+console.log(pro.name);  // 技术胖
 
 
+*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+get = function () {
+    return 'I am JSPang';
+};
+var handler = {
+    apply(target, ctx, args) {
+        console.log('do apply');
+        return Reflect.apply(...arguments);
+    }
+}
+var pro = new Proxy(target, handler);
+console.log(pro());
 
 
 
