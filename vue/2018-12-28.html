@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue计算属性</title>
+</head>
+<body>
+    <div id="app">
+        <p :title="testTitle1Key + ' - ' + testTitle1Key">testTitle</p>
+        <p :title="testTitle3Key - testTitle4Key">testTitle2</p>
+        <p :title="testObj">tetsObj</p>
+        <p :title="testArr">testArr</p>
+        <p :title="testMethod()">testMethod</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+    
+    var testObj = {
+        name: 'testObj'
+    };
+    testObj.toString = function () {
+        return 'name:' + testObj.name;
+    }
+    var app = new Vue({
+        el: '#app',
+        data: {
+          testTitle1Key: 'testTitle1Value',
+          testTitle2Key: 'testTitle2Value',
+          testTitle3Key: 3,
+          testTitle4Key: 2,
+          testObj: {
+            name: 'testObj'
+          },
+          testArr: ['1', '2', '3'],
+          testMethod: function () {
+            var result = 1 + 1;
+            return '1 + 1 = ' + result;
+          }
+        }
+      });
+
+    </script>
+</body>
+</html>

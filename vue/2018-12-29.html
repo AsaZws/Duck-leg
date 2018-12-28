@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vueClass</title>
+</head>
+<body>
+    <div id="app">
+        <p class="test" :class="{'red' : isActive, 'big-font': isBig}">test1</p>
+        <p class="test" :class="testClassObject">test2</p>
+        <p class="test" :class="[classBlue, bigFont]">test3</p>
+        <p class="test" :class="isBlue ? classBlue : classYellow">test4</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+    
+    var testObj = {
+        name: 'testObj'
+    };
+    testObj.toString = function () {
+        return 'name:' + testObj.name;
+    }
+    var app = new Vue({
+        el: '#app',
+        data: {
+            isActive: true,
+            isBig: false,
+            testClassObject: {
+                blue: true,
+                'big-font': true
+            },
+            classBlue: 'blue',
+            bigFont: 'big-font',
+            isBlue: false,
+            classYellow: 'yellow'
+        }
+      });
+
+    </script>
+</body>
+</html>
