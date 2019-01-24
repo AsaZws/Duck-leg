@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>双向绑定</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 这是双向绑定 -->
+        <input type="text" v-model="inputMessage">
+        <p>{{inputMessage}}</p>
+        <br>
+        <textarea v-model="textareaMessage"></textarea>
+        <p>{{textareaMessage}}</p>
+        <br>
+        <!-- 多选框 -->
+        <div>
+            <input type="checkbox" id="android" value="android" v-model="checkedMessage">
+            <label for="android">android</label>
+            <input type="checkbox" id="ios" value="ios" v-model="checkedMessage">
+            <label for="ios">ios</label>
+            <input type="checkbox" id="javascript" value="javascript" v-model="checkedMessage">
+            <label for="javascript">javascript</label>
+            <br>
+            <p>checked message: {{checkedMessage}}</p>
+        </div>
+        <!-- 单选框 -->
+        <div>
+            <input type="radio"  id="javascript" value="javascript" name="testRadio" v-model="radioMessage">
+            <label for="Vue">Vue</label>
+            <br>
+            <p>radio message: {{radioMessage}}</p>
+        </div>
+        <!-- select列表 -->
+        <select v-model="selectedMessage" multiple style="width: 100px;">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <br>
+        <span>selected message: {{selectedMessage}}</span>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+    
+    var app = new Vue({
+        el:'#app',
+        data: {
+            inputMessage: '这是我们默认的信息',
+            textareaMessage: '这是默认textarea的信息',
+            checkedMessage: [],
+            radioMessage: '',
+            selectedMessage: []
+        }
+    })
+
+    </script>
+</body>
+</html>

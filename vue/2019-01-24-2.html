@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model修饰符.lazy</title>
+</head>
+<body>
+    <div id="app">
+        <!-- .lazy修饰符作用为：改变数据同步时机，当执行change事件时进行数据同步 -->
+        <input v-model.lazy="testlazy">
+        <p>{{testlazy}}</p>
+        <br>
+        <!-- .number修饰符作用为：同步数据将输入的值改变为number类型 -->
+        <input v-model.number="testnumber" type="number">
+        <p>{{testnumber}}</p>
+        <br>
+        <!-- .trim修饰符作用为：同步数据去掉输入值前后的空格 -->
+        <input v-model.trim="testTrim">
+        <p>{{testTrim}}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+    
+    var app = new Vue({
+        el: '#app',
+        data: {
+            testlazy: '',
+            testnumber: '',
+            testTrim: ''
+        }
+    })
+
+    </script>
+</body>
+</html>

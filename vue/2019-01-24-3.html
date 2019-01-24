@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件处理</title>
+</head>
+<body>
+    <div id="app">
+        <!-- v-on可以简写成@
+             我们可以通过@直接绑定javascript代码到DOM的click事件，@表示监听DOM
+             但是我们用原生的onclick是无法在Vue中定义的 count 参数的
+        -->
+        <div>
+            <button @click="count += 1">count += 1</button>
+            <button @click="count -= 1">count -= 1</button>
+            <p>count: {{count}}</p>
+        </div>
+        <br>
+        <!-- 
+            我们可以直接调用在Vue中定义的方法名，比如：testOnClickMethods，
+            如果我们直接调用定义的方法名的话，它会传入当前DOm的原生事件：$event
+            我们也可以通过testOnClickMethods($event)的方式调用Vue中定义的方法
+         -->
+        <div>
+            <button @click="testOnClickMethods">testOnClickMethods</button>
+        </div>
+        <br>
+        <!-- 
+            我们可以通过方法名（参数）的方式来直接传入参数，如果我们需要原生事件的对象的话，
+            那我们需要传入$event，如：OnSumClick(1,2,$event)
+         -->
+         <div>
+             <button @click="onSumClick(1,2)">onSumClick</button>
+         </div>
+         <br>
+         <!-- 
+             我们可以使用v-on指令监听任意的事件，比如我们这里监听了input的onkeyup事件，
+             当键盘抬起的时候，我们会调用onChange方法，打印出我们绑定的inputMsg
+          -->
+          <div>
+              <input type="text" @keyup="onChange" v-model="inputMsg"></input>
+          </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+    
+    var app = new Vue({
+        el: '#app',
+        data: {
+            count: 0,
+            inputMsg: ''
+        },
+        // 我们在methods对象中，声明Vue中定义的方法
+        methods: {
+            // 方法名与接受的参数，我们可以直接在控制台中通过app.testOnClickMethods()的方法调用
+            // 通过app.testOnClickMethods()的方式调用需手动传入event对象，当然如果你不需要的话，也可以不用传入
+            testOnClickMethods: function(event) {
+                alert('Hello Vue');
+                if(event) {
+                    alert(event.target.tagName);
+                }
+            },
+            // 我们也可以直接在控制台通过 app.onSumClick() 的方式调用该方法
+            onSumClick: function (s1, s2) {
+                alert(s1 + s2);
+            },
+            // 在方法中获取我们定义的data数据，需要使用this的形式
+            // 在这里this指向我们vue对象中的app
+            onChange: function () {
+                console.log(this.inputMsg);
+            }
+        }
+    })
+
+    </script>
+</body>
+</html>
