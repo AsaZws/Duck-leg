@@ -14,10 +14,12 @@
         top: 50%;
         transform: translateX(-50%) translateY(-50%);
         -webkit-transform: translateX(-50%) translateY(-50%);
-        background-color: antiquewhite;
-        
         background-color: #181818;
         border-radius: 0.1rem;
+    }
+    .happy p {
+        color: #d1513b;
+        font-size: 0.14rem;
     }
     .happy li {
         width: 0.2rem;
@@ -78,55 +80,48 @@
                 oLi[i].style.backgroundColor = "#3c434b";
             }
         }
-        // count_down(one);
-        // count_down(tow);
-        // count_down(three);
-        // count_down(four);
-        // count_down(five);
-        // count_down(six);
-        // count_down(seven);
-        // count_down(eight);
-        // count_down(nine);
-        // count_down(zero);
+        function happy() {
+            oUl.innerHTML = "<p>上联:伟绩丰功开创前海新天地<br>下联:生生不息提振智交精气神<br>横批:周舟绉绉<br>我在此给大家拜年了，猪年大吉大利！</p>"
+        }
         setTimeout(function(){
             count_down(nine);
-            setTimeout(clears,999);
         },1000);
         setTimeout(function(){
+            clears();
             count_down(eight);
-            setTimeout(clears,999);
         },2000);
         setTimeout(function(){
+            clears();
             count_down(seven);
-            setTimeout(clears,999);
         },3000);
         setTimeout(function(){
+            clears();
             count_down(six);
-            setTimeout(clears,999);
         },4000);
         setTimeout(function(){
+            clears();
             count_down(five);
-            setTimeout(clears,999);
         },5000);
         setTimeout(function(){
+            clears();
             count_down(four);
-            setTimeout(clears,999);
         },6000);
         setTimeout(function(){
+            clears();
             count_down(three);
-            setTimeout(clears,999);
         },7000);
         setTimeout(function(){
+            clears();
             count_down(tow);
-            setTimeout(clears,999);
         },8000);
         setTimeout(function(){
+            clears();
             count_down(one);
-            setTimeout(clears,999);
         },9000);
         setTimeout(function(){
+            clears();
             count_down(zero);
-            setTimeout(clears,999);
+            happy();
         },10000);
     }
     </script>
