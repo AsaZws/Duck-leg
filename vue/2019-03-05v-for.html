@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for循环</title>
+</head>
+<body>
+    <h1>v-for指令用法</h1>
+    <hr>
+    <div id="app">
+        <ul>
+            <li v-for="item in items">
+                 {{item}}
+            </li>
+        </ul>
+     </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+    
+    var app=new Vue({
+            el:'#app',
+            data:{
+                items:[20,23,18,65,32,19,54,56,41]
+            },
+            computed:{
+                sortItems:function(){
+                return this.items.sort(sortNumber);
+                }
+            }
+        });
+        function sortNumber(a,b){
+            return a-b
+        }
+
+    </script>
+</body>
+</html>
