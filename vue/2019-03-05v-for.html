@@ -15,12 +15,19 @@
                  {{item}}
             </li>
         </ul>
+        <hr>
+        <ul>
+            <li v-for="(student,index) in students">
+                {{index + 1}}:{{student.name}}-{{student.age}}
+            </li>
+        </ul>
      </div>
 
-    <script src="js/vue.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
     
     var app=new Vue({
+<<<<<<< HEAD
         el:'#app',
         data:{
             items:[20,23,18,65,32,19,54,56,41]
@@ -29,6 +36,36 @@
             sortItems:function(){
             return this.items.sort(sortNumber);
             }
+=======
+            el:'#app',
+            data:{
+                items:[20,23,18,65,32,19,54,56,9],
+                students:[
+                    {name:'jspang',age:18},
+                    {name:'panda',age:22},
+                    {name:'panpan',age:33},
+                    {name:'pang',age:30}
+                ]
+            },
+            computed:{
+                sortItems:function(){
+                    return this.items.sort(sortNumber);
+                },
+                sortStudent:function(){
+                    return sortByKey(this.students,'age');
+                }
+            }
+        });
+        function sortNumber(a,b){
+            return a-b
+        };
+        function sortByKey(array,key){
+            return array.sort(function(a,b){
+                var x=a[key];
+                var y=b[key];
+                return ((x<y)?-1:((x>y)?1:0));
+            })
+>>>>>>> 347f79a023b1bae984392801c1100d97fe0fd8a7
         }
     });
     function sortNumber(a,b){
