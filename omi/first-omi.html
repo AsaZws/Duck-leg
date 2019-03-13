@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Omi in One Minute</title>
+</head>
+<body>
+        <script src="https://tencent.github.io/omi/packages/omi/dist/omi.min.js"></script>
+    <script>
+    const { WeElement, h, render, define } = Omi
+    define('like-button', class extends WeElement {
+        install() {
+            this.data = { liked: false }
+        }
+        render() {
+            if (this.data.liked) {
+                return 'You liked this.'
+            }
+            return h(
+                'button',
+                {
+                    onClick: () => {
+                        this.data.liked = true;
+                        this.update()
+                    }
+                },
+                'Like'
+            )
+        }
+    })
+    render(h('like-button'), 'body')
+    </script>
+    <!-- <like-button>123</like-button> -->
+</body>
+</html>
