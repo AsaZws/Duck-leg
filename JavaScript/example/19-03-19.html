@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象实战</title>
+    <style>
+    #box input {
+        background: #f2f2f2;
+        border: 1px solid #ccc;
+    }
+    #box .active {
+        background: #ccc;
+    }
+    #box div {
+        width: 300px;
+        height: 250px;
+        display: none;
+        padding: 10px;
+        background: #f2f2f2;
+        border: 1px solid #ccc;
+    }
+    </style>
+</head>
+<body>
+<script>
+    
+    /*
+    我们通过prototype，对数组进行拓展，做一个数组加法
+    Array.prototype.sum = function () {
+        var sum = 0;
+        for (var i=0; i<this.length; i++) {
+            sum += this[i];
+        }
+        return sum;
+    }
+    // 通过new Array() 和 [] 创建数组完全是一样的效果
+    var arr1 = new Array(1,2,3,4,5,6);
+    var arr2 = [1,2,3,4,5,6,7];
+
+    console.log(arr1.sum());  // 21
+    console.log(arr2.sum());  // 28
+
+    console.log(arr1.sum == arr2.sum);             //true
+    console.log(arr2.sum == Array.prototype.sum);  // true
+    */
+
+    /*
+    面向过程的选项卡
+    */
+    window.onload = function () {
+        var oBox = document.getElementById('box');
+        var oBtn = oBox.getElementsByTagName('input');
+        var oDiv = oBox.getElementsByTagName('div');
+        for(var i=0; i<oBtn.length; i++) {
+            oBtn[i].index = i;
+            oBtn[i].onclick = function () {
+                for(var j=0; j<oBtn.length; j++) {
+                    oBtn[j].className='';
+                    oDiv[j].style.display='none';
+                }
+                this.className='active';
+                oDiv[this.index].style.display='block';
+            }
+        }
+    }
+
+</script>
+    <div id="box">
+        <input type="button" value="html" class="active">
+        <input type="button" value="css">
+        <input type="button" value="js">
+        <div style="display:block;">html</div>
+        <div>css</div>
+        <div>js</div>
+    </div>
+</body>
+</html>
