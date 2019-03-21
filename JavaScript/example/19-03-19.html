@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>面向对象实战</title>
     <style>
-    #box input {
+    .tab input {
         background: #f2f2f2;
         border: 1px solid #ccc;
     }
-    #box .active {
+    .tab .active {
         background: #ccc;
     }
-    #box div {
+    .tab div {
         width: 300px;
         height: 250px;
         display: none;
@@ -22,50 +22,7 @@
     </style>
 </head>
 <body>
-<script>
-    
-    /*
-    我们通过prototype，对数组进行拓展，做一个数组加法
-    Array.prototype.sum = function () {
-        var sum = 0;
-        for (var i=0; i<this.length; i++) {
-            sum += this[i];
-        }
-        return sum;
-    }
-    // 通过new Array() 和 [] 创建数组完全是一样的效果
-    var arr1 = new Array(1,2,3,4,5,6);
-    var arr2 = [1,2,3,4,5,6,7];
-
-    console.log(arr1.sum());  // 21
-    console.log(arr2.sum());  // 28
-
-    console.log(arr1.sum == arr2.sum);             //true
-    console.log(arr2.sum == Array.prototype.sum);  // true
-    */
-
-    /*
-    面向过程的选项卡
-    */
-    window.onload = function () {
-        var oBox = document.getElementById('box');
-        var oBtn = oBox.getElementsByTagName('input');
-        var oDiv = oBox.getElementsByTagName('div');
-        for(var i=0; i<oBtn.length; i++) {
-            oBtn[i].index = i;
-            oBtn[i].onclick = function () {
-                for(var j=0; j<oBtn.length; j++) {
-                    oBtn[j].className='';
-                    oDiv[j].style.display='none';
-                }
-                this.className='active';
-                oDiv[this.index].style.display='block';
-            }
-        }
-    }
-
-</script>
-    <div id="box">
+    <div class="tab" id="box1">
         <input type="button" value="html" class="active">
         <input type="button" value="css">
         <input type="button" value="js">
@@ -73,5 +30,86 @@
         <div>css</div>
         <div>js</div>
     </div>
+    <div class="tab" id="box2">
+        <input type="button" value="html" class="active">
+        <input type="button" value="css">
+        <input type="button" value="js">
+        <div style="display:block;">html</div>
+        <div>css</div>
+        <div>js</div>
+    </div>
+    <script>
+        
+        /*
+        我们通过prototype，对数组进行拓展，做一个数组加法
+        Array.prototype.sum = function () {
+            var sum = 0;
+            for (var i=0; i<this.length; i++) {
+                sum += this[i];
+            }
+            return sum;
+        }
+        // 通过new Array() 和 [] 创建数组完全是一样的效果
+        var arr1 = new Array(1,2,3,4,5,6);
+        var arr2 = [1,2,3,4,5,6,7];
+    
+        console.log(arr1.sum());  // 21
+        console.log(arr2.sum());  // 28
+    
+        console.log(arr1.sum == arr2.sum);             //true
+        console.log(arr2.sum == Array.prototype.sum);  // true
+        */
+    
+        /*
+        面向过程的选项卡
+        window.onload = function () {
+            var oBox = document.getElementById('box1');
+            var oBtn = oBox.getElementsByTagName('input');
+            var oDiv = oBox.getElementsByTagName('div');
+            for(var i=0; i<oBtn.length; i++) {
+                oBtn[i].index = i;
+                oBtn[i].onclick = function () {
+                    for(var j=0; j<oBtn.length; j++) {
+                        oBtn[j].className='';
+                        oDiv[j].style.display='none';
+                    }
+                    this.className='active';
+                    oDiv[this.index].style.display='block';
+                }
+            }
+        }
+        */
+        /*
+        面向对象的选项卡
+        */
+        function Tab(id) {
+            var oBox = document.getElementById(id);
+            this.oBtn = oBox.getElementsByTagName('input');
+            this.oDiv = oBox.getElementsByTagName('div');
+    
+            for(var i=0; i<this.oBtn.length; i++) {
+                this.oBtn[i].index = i;  // 获取索引
+                var _this = this;        // 保存this
+                this.oBtn[i].onclick = function() {
+                    _this.clickBtn(this);
+                    console.log(this);   // 点击哪个，指向哪个
+                    console.log(_this);  // Tab对象
+                }
+            }
+        }
+        Tab.prototype.clickBtn = function(btn) {  // 为Tab原型添加点击选项卡方法
+            for(var j=0;j<this.oBtn.length; j++) {
+                this.oBtn[j].className = '';
+                this.oDiv[j].style.display = 'none';
+            }
+            btn.className = 'active';
+            this.oDiv[btn.index].style.display = 'block';
+        }
+
+        window.onload = function() {
+            var box1 = new Tab("box1");
+            var box2 = new Tab("box2");
+        }
+    </script>
 </body>
 </html>

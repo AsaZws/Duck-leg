@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象中的this</title>
+    <style>
+    #box {
+        width: 100px;
+        height: 100px;
+        background: #ccc;
+        position: absolute;
+    }
+    </style>
+</head>
+<body>
+    <script>
+    /*
+    this发生了变化
+
+    function Person(name) {
+        this.name = name;
+        setInterval(this.showName, 3000);
+    }
+    Person.prototype.showName = function() {
+        console.log(this);  // window
+        console.log("姓名：" + this.name);  // 姓名
+    }
+    var p1 = new Person("zws");
+    */
+
+    /*
+    解决办法
+    function Person(name) {
+        this.name = name;
+        var _this = this;
+        setInterval(function() {
+            _this.showName();
+        }, 3000);
+    }
+    Person.prototype.showName = function() {
+        console.log(this);                  // Person {name: "zws"}
+        console.log("姓名：" + this.name);  // 姓名：zws
+    }
+    var p2 = new Person("zws");
+    */
+    var oBox=null;
+    var disX=0;
+    var disY=0;
+    
+    window.onload=function(){
+        oBox=document.getElementById('box');
+        
+        oBox.onmousedown=fnDown;
+    };
+    //鼠标按下事件
+    function fnDown(ev){
+        var oEvent = ev||event;
+        disX = oEvent.clientX - oBox.offsetLeft;
+        disY = oEvent.clientY - oBox.offsetTop;
+        
+        document.onmousemove = fnMove;
+        document.onmouseup = fnUp;
+    }
+    //鼠标移动事件
+    function fnMove(ev){
+        var oEvent=ev||event;
+        
+        oBox.style.left = oEvent.clientX - disX + 'px';
+        oBox.style.top = oEvent.clientY - disY + 'px';
+    }
+    //鼠标抬起事件
+    function fnUp(){
+        document.onmousemove = null;
+        document.onmouseup = null;
+    }
+    </script>
+    <div id="box"></div>
+</body>
+</html>
