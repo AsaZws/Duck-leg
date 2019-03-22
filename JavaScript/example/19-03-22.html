@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象中的高级用法</title>
+</head>
+<body>
+    <script>
+    /*
+    对象继承
+    */
+    function Person(name, sex) {                // 父类
+        this.name = name;
+        this.sex = sex;
+    }
+    Person.prototype.showName = function() {
+        console.log("姓名：" + this.name);      // zws
+        console.log(this)
+    }
+    Person.prototype.showSex = function() {
+        console.log("性别：" + this.sex);       // 男
+        console.log(this)
+    }
+
+    function Student(name, sex, major) {        // 继承
+        Person.call(this, name, sex);           // 调用父类的构造函数
+        this.major = major;                     // 添加自己的属性
+    }
+    Student.prototype = Person.prototype;       // 继承父类原型的方法
+    Student.prototype.showMajor = function() {  // 添加自己特有的方法
+        console.log("专业:" + this.major);      // 前端
+        console.log(this)
+    }
+
+    var student = new Student("zws", "男", "前端");
+    student.showName();
+    student.showSex();
+    student.showMajor();
+    console.log(Person.prototype.showMajor);
+    </script>
+</body>
+</html>
