@@ -26,7 +26,21 @@
         Person.call(this, name, sex);           // 调用父类的构造函数
         this.major = major;                     // 添加自己的属性
     }
+
+    /*
+    这种方法会改变父类的属性
+    console.log(Person.prototype.showMajor);    // 这里打印有信息
     Student.prototype = Person.prototype;       // 继承父类原型的方法
+    */
+
+    /*
+    这种方法不会改变父类的属性
+    console.log(Person.prototype.showMajor);    // 这里打印undefined
+    */
+    for (var p in Person.prototype) {
+        Student.prototype[p] = Person.prototype[p];
+    }
+
     Student.prototype.showMajor = function() {  // 添加自己特有的方法
         console.log("专业:" + this.major);      // 前端
         console.log(this)
