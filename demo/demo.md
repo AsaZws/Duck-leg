@@ -7,3 +7,5 @@
 ![](CarePreloader/images/car.gif)
 
 [3、 倒计时](https://asazws.github.io/Duck-leg/demo/Happy-new-year/happer-new-year.html)
+
+[4、 分页](https://asazws.github.io/Duck-leg/demo/pageTurning/index.html)
