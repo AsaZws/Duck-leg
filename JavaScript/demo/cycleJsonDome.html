@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>循环json的demo</title>
+</head>
+<body>
+    
+    <script>
+    var a = 'D';
+    var b = 701;
+    var Arr = ['1','2'];
+    for (var i=0; i<42; i++) {
+        var n = Math.floor(Math.random() * Arr.length + 1) - 1;
+        var json1 = '{' + '"ID"' + ':' + b + ',' + '"name"' + ':' + '"' + '车位' + a + b + '"' + ',' + '"fnum"' + ':' + 2 + ',' + '"status"' + ':' + Arr[n] +'}' + ',' + '<br>';
+        document.write(json1);
+        b = b+1;
+    }
+    
+    </script>
+
+
+</body>
+</html>
