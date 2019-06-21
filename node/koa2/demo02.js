@@ -1,29 +1,59 @@
-const koa = require('koa');
-const app = new koa();
+const Koa = require('koa');
+const app = new Koa();
 
-app .use(async(ctx) => {
-    // 当get请求的时候，显示表单让用户填写
-    if(ctx.url==='/' && ctx.method==='GET'){
+app.use(async(ctx) => {
+    if(ctx.url === '/' && ctx.method === 'GET') {
+        // 显示表单页面
         let html = `
-            <h1>Koa2 request post demo</h1>
-            <form method="POST" action="/">
-                <p>user Name</p>
-                <input name="userName"/><br/>
+            <h1>JSPang Koa2 request POST</h1>
+            <form method = "POST" action="/">
+                <p>userName</p>
+                <input name="userName" /><br/>
                 <p>age</p>
-                <input name="age"/><br/>
+                <input name="age" /><br/>
                 <button type="submit">submit</button>
             </form>
         `;
         ctx.body = html;
-    // 当请求时POST的时候
-    } else if(ctx.url==='/' && ctx.method === 'POST') {
-        ctx.body='接收到POST请求';
+        // 请求头为POST
+    } else if(ctx.url === '/' && ctx.method==='POST') {
+        let pastData = await parsePostData(ctx);
+        ctx.body = pastData;
+        // 请求失败
     } else {
-        // 其他请求 显示404
         ctx.body='<h1>404!</h1>'
     }
 })
 
+function parsePostData(ctx){
+    return new Promise((resolve,reject) => {
+        try{
+            let postdata = "";
+            ctx.req.addListener('data',(data) => {
+                postdata += data;
+            })
+            ctx.req.on("end",function(){
+                let parseData = parseQueryStr( postdata )
+                resolve(parseData);
+            })
+        }catch(error){
+            reject(error);
+        }
+    });
+}
+
+function parseQueryStr(queryStr){
+    let queryData = {};
+    let queryStrList = queryStr.split('&')
+    console.log(queryStrList)
+    for(let [index,queryStr] of queryStrList.entries()) {
+        let itemList = queryStr.split('=')
+        console.log(itemList)
+        queryData[itemList[0]] = decodeURIComponent(itemList[1])
+    }
+    return queryData
+}
+
 app.listen(3000, () => {
-    console.log('[demo02] server is starting at port 3000')
+    console.log('[demo.02] server is starting at port 3000')
 })
