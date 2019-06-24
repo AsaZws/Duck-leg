@@ -32,20 +32,20 @@
     */
 
     // 我们直接用匿名函数的立即执行试试
-    var tasks = [];
-    for (var i=0; i<3; i++) {
-        (function (n) {
-            tasks.push(function () {
-                console.log('>' + n);
-            })
-        })(i);
-    }
+    // var tasks = [];
+    // for (var i=0; i<3; i++) {
+    //     (function (n) {
+    //         tasks.push(function () {
+    //             console.log('>' + n);
+    //         })
+    //     })(i);
+    // }
 
-    console.log('end for');
+    // console.log('end for');
 
-    for (var j=0; j<tasks.length; j++) {
-        tasks[j]();
-    }
+    // for (var j=0; j<tasks.length; j++) {
+    //     tasks[j]();
+    // }
     /** 
         这里打印出
         end for
