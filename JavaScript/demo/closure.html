@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es5闭包在循环中的问题</title>
+</head>
+<body>
+    <script>
+    
+    // 先用ES5中的var
+    // var tasks = [];
+    // for(var i=0; i<3; i++) {
+    //     tasks.push(function() {
+    //         console.log('>' + i);
+    //     });
+    // }
+
+    // console.log('end for');
+
+    // for(var j=0; j<tasks.length; j++) {
+    //     tasks[j]();
+    // }
+    /** 
+        这里打印出
+        end for
+        >3
+        >3
+        >3
+        这是因为javascript缺少块级作用域，
+        创建闭包的一条原则是不要引用变量，这条原则对没有块级作用域的函数式编程语言都适用。
+        如果一定要在闭包中引用循环变量，那就是要再创建一个函数，将循环变量作为函数参数传入。
+    */
+
+    // 我们直接用匿名函数的立即执行试试
+    var tasks = [];
+    for (var i=0; i<3; i++) {
+        (function (n) {
+            tasks.push(function () {
+                console.log('>' + n);
+            })
+        })(i);
+    }
+
+    console.log('end for');
+
+    for (var j=0; j<tasks.length; j++) {
+        tasks[j]();
+    }
+    /** 
+        这里打印出
+        end for
+        >0
+        >1
+        >2
+        解决
+    */
+
+    // 下面我们再使用ES6中的let试试
+    // let tasks = [];
+    // for(let i=0; i<3; i++) {
+    //     tasks.push(function() {
+    //         console.log('>' + i);
+    //     });
+    // }
+
+    // console.log('end for');
+
+    // for(let j=0; j<tasks.length; j++) {
+    //     tasks[j]();
+    // }
+    /** 
+        这里打印出
+        end for
+        >0
+        >1
+        >2
+        这里用ES6中的let，解决了ES5中缺少块作用域是语言设计的一个缺陷，完美解决，希望大家多多使用ES6。
+    */
+
+    </script>
+</body>
+</html>
