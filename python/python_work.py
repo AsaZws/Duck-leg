@@ -50,10 +50,12 @@
 # print(motorcycles)
 # print(poped_motorcycles)
 # 排序
-motorcycles = ['honda', 'yamaha', 'suzuki']
-motorcycles.sort(reverse = True)
-print(motorcycles)
+# motorcycles = ['honda', 'yamaha', 'suzuki']
+# motorcycles.sort(reverse = True)
+# print(motorcycles)
+# print(len(motorcycles))
 
+home = ["立美"]
 
 
 
