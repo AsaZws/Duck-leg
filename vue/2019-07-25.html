@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性</title>
+    <style>
+    .active {
+        color: red;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <ul>
+            <li v-for="(item, index) in todos" :class="{active: currentIndex === index}" @click="liClick( index )">
+                {{ index+1 + '.' }}
+                <span>{{ todos[index].id }}</span>
+                <span>{{ todos[index].title }}</span>
+                <span>{{ todos[index].number + '元' }}</span>
+            </li>
+        </ul>
+
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+    
+    const app = new Vue({
+        el: '#app',
+        data: 
+        {
+            todos:
+            [
+                {id: 'aaa', title: '第一个', number: '111'},
+                {id: 'bbb', title: '第二个', number: '222'},
+                {id: 'ccc', title: '第三个', number: '333'},
+            ],
+            currentIndex: 0,
+        },
+        methods: {
+            liClick(index) {
+                this.currentIndex = index
+            }
+        },
+    })
+
+    </script>
+</body>
+</html>

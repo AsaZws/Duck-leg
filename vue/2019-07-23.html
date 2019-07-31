@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性</title>
+</head>
+<body>
+    <div id="app">
+
+        <ul>
+            <li v-for="(item, index) in todos">{{ index+1 + '.' }}<span>{{ todos[index].id }}</span> <span>{{ todos[index].title }}</span> <span>{{ todos[index].number + '元' }}</span></li>
+            <p>一共选了{{ this.todos.length }}样，总和等于：{{ sum + '元' }}</p>
+        </ul>
+
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+    
+    const app = new Vue({
+        el: '#app',
+        data: 
+        {
+            todos:
+            [
+                {id: 'aaa', title: '第一个', number: '111'},
+                {id: 'bbb', title: '第二个', number: '222'},
+                {id: 'ccc', title: '第三个', number: '333'},
+            ]
+        },
+        computed: {
+            // 计算属性中不能使用箭头函数，因为箭头函数的this不会按预期指向Vue
+            sum: {
+                get() {
+                    let res = 0;
+                    for(let i=0; i<this.todos.length; i++) {
+                        res += Number(this.todos[i].number);
+                    }
+                    return res;
+                }
+            }
+        },
+    })
+
+    </script>
+</body>
+</html>
