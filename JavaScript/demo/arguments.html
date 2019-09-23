@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>arguments</title>
+</head>
+<body>
+  
+  <script>
+  
+  /**
+   * arguments:
+   * 1.对参数个数不同的对象能够模拟重载
+   * 2.每个函数都有一个Arguments对象实例arguments，它引用着函数的实参
+   * 3.可以用数组下标来引用arguments元素
+   * 4.arguments.length为函数实参个数
+   * 5.arguments.callee引用函数自身，callee属性数arguments对象的一个成员，仅当相关函数正在执行时才可用
+   * 
+   */
+  function arr(n) {
+    if(1 == n) {
+      return 1;
+    } else {
+      // 相当于递归调用，n + (n-1) + 1
+      return n + arguments.callee(n-1);
+    }
+  }
+  console.log(arr(100));
+  
+
+  </script>
+</body>
+</html>
