@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Parents from './parents/parents';
 import './App.css';
 
-function App() {
-  return (
-    <h1>Hello World</h1>
-  );
+class App extends Component {
+  state = {  }
+  render() { 
+    return ( 
+      <div className="App">
+        <h1>App组件</h1>
+        <Parents></Parents>
+      </div>
+     );
+  }
 }
-
+ 
 export default App;
