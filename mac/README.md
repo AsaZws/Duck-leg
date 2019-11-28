@@ -54,4 +54,8 @@ echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> ~/.zshrc // 输出到
 
 #### 重要的一步，设置安全的访问 
 
-- mysql_secure_installation
+- mysql_secure_installation 
+
+#### 添加mysql到PATH  
+
+- PATH="$PATH":/usr/local/mysql/bin
