@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>改变this指向问题</title>
+</head>
+<body>
+  <script>
+    
+    function func(x, y) {
+      console.log(this);
+    }
+
+    var obj = {
+      name: 'zsf'
+    }
+
+    /**
+     * 此时this指向window
+     *  
+     */
+    func(1,2);
+
+    /**
+     * 此时this就指向obj了
+     *  
+     */
+    func.call(obj, 1, 2);
+    func.apply(obj, [1, 2]);
+    func.bind(obj, 1, 2)();
+
+    var obj = {
+      fire: function () { //此时的fire函数其实用到了隐式绑定
+          console.log(this);
+          function innerFire() {
+              console.log(this === window); //未明确调用对象，this指向window
+              
+          }
+          innerFire();
+      }
+    }
+    obj.fire(); //输出 true
+    
+  </script>
+</body>
+</html>
