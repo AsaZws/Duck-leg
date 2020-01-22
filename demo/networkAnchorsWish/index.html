@@ -1,77 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<head><meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
   <title>主播心愿清单</title>
   <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/weui.min.css">
-  <link rel="stylesheet" href="css/jquery-weui.min.css">
-  <style>
-  
-  .header-img {
-    width: 100%;
-    height: 80px;
-    background-color: #f0f0f0;
-  }
-
-  .padding12 {
-    padding: 12px;
-  }
-  .main-img {
-    margin-top: 10px;
-    width: 100%;
-    height: 60px;
-    background-color: #f0f0f0;
-  }
-
-  </style>
+  <link rel="stylesheet" href="css/frozen.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body ontouchstart>
-  
+<body>
+  <!-- <script type="text/javascript">
+  ! function (t, e) {
+    setTimeout(function () {
+      var t = "-webkit-transform: scale(" +
+        (e.body.clientWidth / 375)
+        .toString().substring(0, 6) + ");-webkit-transform-origin:lefttop;opacity: 1;";
+        document.querySelector(".act-content").
+        setAttribute("style ",t)
+    },0)}
+    (window, document);
+  </script> -->
+  <!-- header -->
+<div class="contenter">
   <div class="header">
-    <div class="header-img"></div>
+    <!-- 规则奖励按钮 -->
+    <div class="rule_button">
+      <a href="#">规则奖励</a>
+    </div>
   </div>
-
-  <div class="padding12">
-    <div class="weui-tab">
-      <div class="weui-navbar">
-        <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
-          一见钟情
-        </a>
-        <a class="weui-navbar__item" href="#tab2">
-          甜蜜告白
-        </a>
-        <a class="weui-navbar__item" href="#tab3">
-          浪漫约会
-        </a>
-        <a class="weui-navbar__item" href="#tab4">
-          幸福车队
-        </a>
-      </div>
-      <div class="weui-tab__bd">
-        <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
-          <div class="main-img">
-
+  <div class="main">
+    <!-- 抽奖模块 -->
+    <div class="public_button luck_draw">
+      <h1>
+        <span>召唤丘比特，抽万元豪礼</span>
+        <strong class="question"></strong>
+      </h1>
+      <div class="content">
+        <div class="public_frame reward">
+          <h2>丘比特已降临本房，赠送任意心愿礼物可参与抽奖</h2>
+          <div class="ui-row-flex ui-whitespace">
+            <div class="ui-col ui-col public_main_frame reward_name">
+              <div class="reward_name_inside">奖励名称</div>
+            </div>
+            <div class="ui-col ui-col public_main_frame reward_name">
+              <div class="reward_name_inside">奖励名称</div>
+            </div>
+            <div class="ui-col ui-col public_main_frame reward_name">
+              <div class="reward_name_inside">奖励名称</div>
+            </div>
+            <div class="ui-col ui-col public_main_frame reward_name">
+              <div class="reward_name_inside">奖励名称</div>
+            </div>
           </div>
-          <h2>完成奖励</h2>
-          
+          <div class="luck_draw_button">
+            <a href="#" class="open_luck_draw"></a>
+            <a href="#" class="not_opend_luck_draw"></a>
+            <a href="#" class="winning_record">中奖记录</a>
+          </div>
         </div>
-        <div id="tab2" class="weui-tab__bd-item">
-          <h1>页面二</h1>
+      </div>
+    </div>
+    <!-- 主播心愿单 -->
+    <div class="public_button anchors_wish">
+      <h1>
+        <span>主播心愿单</span>
+        <strong class="flower1"></strong>
+        <strong class="flower2"></strong>
+      </h1>
+      <div class="content">
+        <p>赠送心愿礼物解锁恋爱成就。每达成一个成就将触发定时房间特效及边框。全部达成将触发房间全屏特效及全局通知。</p>
+      </div>
+    </div>
+    <!-- tab切换 -->
+    <div class="tab_switch">
+      <div class="ui-row-flex ui-whitespace">
+        <div class="ui-col ui-col tab_button tab_button_active">怦然心动</div>
+        <div class="ui-col ui-col tab_button">甜蜜告白</div>
+        <div class="ui-col ui-col tab_button">浪漫约会</div>
+        <div class="ui-col ui-col tab_button">幸福车队</div>
+      </div>
+      <div class="tab_content">
+        <!-- 怦然心动 -->
+        <div class="content_one tab_contenter">
+          <!-- 娱乐区 -->
+          <div class="content">
+            <div class="public_frame entertainment_area">
+              <div class="ui-row-flex ui-whitespace">
+                <div class="ui-col circular">
+                  <h4>
+                    <span>娱乐区</span>
+                  </h4>
+                </div>
+                <div class="ui-col ui-col-2 heartbeat_value">
+                  <h4 class="ui-nowrap">距解锁下一个成就差<span>999</span>心动值</h4>
+                  <p>当前心动值:<span class="colors">9999</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 心愿礼物 -->
+          <div class="content">
+            <div class="public_frame wish_gift">
+              <h1>主播心愿礼物</h1>
+              <div class="ui-row-flex ui-whitespace">
+                <div class="ui-col ui-col public_main_frame wish_name">
+                  <div class="wish_name_children">
+                    <p>礼物名</p>
+                    <h6>+<span>1000</span>心动值</h6>
+                    <a href="#" class="wish_name_children_button">立即赠送</a>
+                  </div>
+                </div>
+                <div class="ui-col ui-col public_main_frame wish_name">
+                  <div class="wish_name_children">
+                    <p>礼物名</p>
+                    <h6>+<span>1000</span>心动值</h6>
+                    <a href="#" class="wish_name_children_button">立即赠送</a>
+                  </div>
+                </div>
+                <div class="ui-col ui-col public_main_frame wish_name">
+                  <div class="wish_name_children">
+                    <p>礼物名</p>
+                    <h6>+<span>1000</span>心动值</h6>
+                    <a href="#" class="wish_name_children_button">立即赠送</a>
+                  </div>
+                </div>
+              </div>
+              <h6 class="contribution_value">我|心动贡献值：<span class="colors">999</span>本房排行<span>NO.1</span></h6>
+            </div>
+          </div>
+          <!-- 主播成就奖 -->
+          <div class="content">
+            <div class="public_frame achievement">
+              <h1>主播成就奖</h1>
+              <div class="ui-row-flex ui-whitespace">
+                <div class="ui-col ui-col public_main_frame achievement_name">
+                  <div class="achievement_name_inside">奖励名称</div>
+                </div>
+                <div class="ui-col ui-col public_main_frame achievement_name">
+                  <div class="achievement_name_inside">奖励名称</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 甜蜜礼包限时兑换 -->
+          <div class="public_button gift_exchange">
+            <h1>
+              <span>甜蜜礼包限时兑换</span>
+            </h1>
+            <div class="content">
+              <p>1钻+10积分，积分可兑换礼包&nbsp;&nbsp;&nbsp;&nbsp;可兑积分:<span class="colors">111</span></p>
+              <ul class="public_frame gift_exchange_main">
+                <li class="public_main_frame gift_exchange_name">
+                  <div class="gift_badge">守护11级</div>
+                  <div class="gift_exchange_name_inside">
+                    奖励名称
+                  </div>
+                  <div class="gift_exchange_children">
+                    <a href="#" class="gift_exchange_button">兑换</a>
+                    <p>111积分</p>
+                  </div>
+                </li>
+                <li class="public_main_frame gift_exchange_name">
+                  <div class="gift_exchange_name_inside">
+                    奖励名称
+                  </div>
+                  <div class="gift_exchange_children">
+                    <a href="#" class="gift_exchange_button">兑换</a>
+                    <p>111积分</p>
+                  </div>
+                </li>
+                <li class="public_main_frame gift_exchange_name">
+                  <div class="gift_exchange_name_inside">
+                    奖励名称
+                  </div>
+                  <div class="gift_exchange_children">
+                    <a href="#" class="gift_exchange_button">兑换</a>
+                    <p>111积分</p>
+                  </div>
+                </li>
+                <li class="public_main_frame gift_exchange_name">
+                  <div class="gift_exchange_name_inside">
+                    奖励名称
+                  </div>
+                  <div class="gift_exchange_children">
+                    <a href="#" class="gift_exchange_button">兑换</a>
+                    <p>111积分</p>
+                  </div>
+                </li>
+                <li class="public_main_frame gift_exchange_name">
+                  <div class="gift_exchange_name_inside">
+                    奖励名称
+                  </div>
+                  <div class="gift_exchange_children">
+                    <a href="#" class="gift_exchange_button">兑换</a>
+                    <p>111积分</p>
+                  </div>
+                </li>
+                <li class="public_main_frame gift_exchange_name">
+                  <div class="gift_exchange_name_inside">
+                    奖励名称
+                  </div>
+                  <div class="gift_exchange_children">
+                    <a href="#" class="gift_exchange_button">兑换</a>
+                    <p>111积分</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 更多福利 -->
+          <div class="public_button more_benefits">
+            <h1>
+              <span>更多福利</span>
+            </h1>
+            <div class="content">
+              <div class="public_frame more">
+                <div class="ui-row-flex ui-whitespace">
+                  <div class="ui-col ui-col public_main_frame more_name">
+                    <div class="more_name_inside">奖励名称</div>
+                  </div>
+                  <div class="ui-col ui-col public_main_frame more_name">
+                    <div class="more_name_inside">奖励名称</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div id="tab3" class="weui-tab__bd-item">
-          <h1>页面三</h1>
+        <!-- 甜蜜告白 -->
+        <div class="content_tow tab_contenter tab_hide">
+          2222222222
         </div>
-        <div id="tab4" class="weui-tab__bd-item">
-          <h1>页面四</h1>
+        <!-- 浪漫约会 -->
+        <div class="content_three tab_contenter tab_hide">
+          3
+        </div>
+        <!-- 幸福车队 -->
+        <div class="content_four tab_contenter tab_hide">
+          4
         </div>
       </div>
     </div>
   </div>
-
-  <script src="js/jquery-2.1.4.js"></script>
-  <script src="js/jquery-weui.min.js"></script>
+</div>
+<script src="js/zepto.min.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>

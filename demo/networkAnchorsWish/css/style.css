@@ -1,0 +1,506 @@
+.contenter {
+  background: url(../img/background.png) repeat-y;
+  background-size: 100%;
+  position: relative;
+  padding-bottom: 88px;
+}
+.contenter:before {
+  content: "";
+  width: 100%;
+  height: 200px;
+  background: url(../img/bottom_background.png) no-repeat;
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+.header {
+  width: 100%;
+  height: 0;
+  background: url(../img/top_background.png) no-repeat;
+  background-size: 100% auto;
+  padding-top: 64%;
+  position: relative;
+}
+.header .rule_button a{
+  color: #866214;
+  background-color: #fbd432;
+  border: 1px solid #fff3c0;
+  border-radius: 20px;
+  padding: 2px 14px;
+  font-size: 13px;
+  position: absolute;
+  right: -10px;
+  top: 106px;
+}
+
+.main {
+  text-align: center;
+  margin-top: -86px;
+}
+/* 文字颜色 */
+.colors {
+  color: #f6406c;
+}
+/* 公共按钮 */
+.public_button h1 {
+  display: inline-block;
+  padding: 2px 40px;
+  border: 2px solid #f96b99;
+  border-radius: 18px;
+  color: #fff;
+  background-color: #fe83a0;
+  box-shadow: inset 0 0 2px #fe9db5;
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+}
+.public_button h1:before, .public_button h1:after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 12px;
+  background: url(../img/love.png) no-repeat;
+  background-size: 14px 12px;
+  top: 50%;
+  margin-top: -4px;
+}
+.public_button h1:before {
+  left: 5%;
+}
+.public_button h1:after {
+  right: 5%;
+}
+/* 公共框 */
+.public_frame {
+  width: 100%;
+  background-color: #fee6f3;
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px 6px #ec7a9e;
+  position: relative;
+  z-index: 1;
+}
+/* 公共内容框 */
+.public_main_frame {
+  text-align: center;
+  height: 0;
+  color: #fff;
+  background-color: #fe83a0;
+  border: 1px solid #f86987;
+  box-shadow: inset 0 0 2px #fe9db5;
+  border-radius: 8px;
+  position: relative;
+}
+.public_main_frame:after {
+  content: "";
+  width: 112%;
+  height: 112%;
+  background-color: #fca5c1;
+  border-radius: 8px;
+  position: absolute;
+  left: -6%;
+  top: -6%;
+  z-index: -1;
+}
+/* 抽奖模块 */
+.main .luck_draw .question {
+  width: 28px;
+  height: 28px;
+  background: url(../img/question.png) no-repeat;
+  background-size: 28px;
+  position: absolute;
+  top: -14px;
+  right: -14px;
+}
+.content {
+  padding: 0 16px;
+}
+.reward {
+  margin-top: 16px;
+  padding-top: 6px;
+  padding-bottom: 20px;
+}
+.reward h2 {
+  color: #000;
+  font-size: 14px;
+  line-height: 32px;
+}
+.reward .reward_name {
+  width: 25%;
+  margin: 8px;
+  padding-bottom: 20%;
+}
+.reward .reward_name:nth-child(1) {
+  margin-left: 4px;
+}
+.reward .reward_name:nth-last-child(1) {
+  margin-right: 4px;
+}
+.reward .reward_name .reward_name_inside {
+  position:absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.reward .luck_draw_button {
+  width: 100%;
+  height: 48px;
+  margin-top: 8px;
+  position: relative;
+}
+.reward .luck_draw_button .not_opend_luck_draw {
+  display: block;
+  margin: 0 auto;
+  width: 40%;
+  height: 100%;
+  background: url(../img/not_opend.png) no-repeat;
+  background-size: cover;
+}
+.reward .luck_draw_button .winning_record {
+  position: absolute;
+  bottom: 0;
+  right: 14%;
+  font-size: 14px;
+  color: #866214;
+  border-bottom: 1px solid #866214;
+}
+/* 主播心愿单 */
+.anchors_wish {
+  margin-top: 24px;
+}
+.anchors_wish h1 {
+  padding: 2px 50px;
+}
+.anchors_wish h1:before {
+  left: 10%;
+}
+.anchors_wish h1:after {
+  right: 10%;
+}
+.anchors_wish h1 .flower1 {
+  width: 36px;
+  height: 20px;
+  background: url(../img/flower1.png) no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: -12px;
+  bottom: -4px;
+}
+.anchors_wish h1 .flower2 {
+  width: 60px;
+  height: 30px;
+  background: url(../img/flower2.png) no-repeat;
+  background-size: cover;
+  position: absolute;
+  right: -26px;
+  top: -16px;
+}
+.anchors_wish .content p {
+  text-align: left;
+  padding: 0 8px;
+  margin-top: 14px;
+  font-size: 13px;
+}
+/* tab切换 */
+.tab_switch {
+  margin-top: 16px;
+  position: relative;
+  z-index: 2;
+}
+.tab_switch .tab_button {
+  width: 96%;
+  height: 36px;
+  line-height: 32px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  background: url(../img/tab_button.png) no-repeat;
+  background-size: 96% 36px;
+}
+.tab_switch .tab_button_active {
+  background: url(../img/tab_button_active.png) no-repeat;
+  background-size: 96% 36px;
+  position: relative;
+}
+.tab_switch .tab_button_active:before {
+  content: "";
+  width: 30px;
+  height: 16px;
+  background: url(../img/triangle_active.png) no-repeat;
+  background-size: 30px 16px;
+  position: absolute;
+  left: 32%;
+  bottom: -11px;
+}
+/* 娱乐区 */
+.entertainment_area {
+  margin-top: 24px;
+  width: 100%;
+  padding: 10px 0;
+  position: relative;
+}
+.entertainment_area:after {
+  content: "";
+  width: 36px;
+  height: 24px;
+  background: url(../img/heart1.png) no-repeat;
+  background-size: 36px 24px;
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+}
+.entertainment_area:before {
+  content: "";
+  width: 46px;
+  height: 50px;
+  background: url(../img/heart2.png) no-repeat;
+  background-size: 46px 50px;
+  position: absolute;
+  top: -10px;
+  right: -6px;
+}
+.entertainment_area .circular h4 {
+  width: 74%;
+  padding-bottom: 74%;
+  margin: 0 auto;
+  margin: 0 20px 10px 10px;
+  border-radius: 50%;
+  background-color: #f6406c;
+  border: 2px solid #fff;
+  position: relative;
+}
+.entertainment_area .circular span {
+  width: 88px;
+  background-color: #fdc80e;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  font-size: 15px;
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  margin-left: -44px;
+}
+.entertainment_area .circular span {
+  /* 标准的语法 */
+  background-image: linear-gradient(to right, #fdc80e,#fff68b,#fdc80e);
+}
+/* 心动值 */
+.heartbeat_value {
+  text-align: left;
+  margin-top: 24px;
+}
+.heartbeat_value h4 {
+  font-size: 15px;
+}
+.heartbeat_value p {
+  font-size: 14px;
+}
+/* 心愿礼物 */
+.wish_gift {
+  margin-top: 16px;
+  padding: 12px 0;
+}
+.wish_gift h1 {
+  display: inline-block;
+  padding: 2px 40px;
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  color: #f6406c;
+}
+.wish_gift h1:before, .wish_gift h1:after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 12px;
+  background: url(../img/red_heart.png) no-repeat;
+  background-size: 14px 12px;
+  top: 50%;
+  margin-top: -4px;
+}
+.wish_gift h1:before {
+  left: 5%;
+}
+.wish_gift h1:after {
+  right: 5%;
+}
+.wish_gift .wish_name {
+  width: 33%;
+  margin: 8px;
+  padding-top: 28%;
+}
+.wish_gift .wish_name:nth-child(1) {
+  margin-left: 4px;
+}
+.wish_gift .wish_name:nth-last-child(1) {
+  margin-right: 4px;
+}
+.wish_gift .wish_name_children {
+  color: #000;
+  line-height: 16px;
+  margin-top: 12px;
+}
+.wish_gift .wish_name_children_button {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-top: 6px;
+  background: url(../img/gift_button.png) no-repeat;
+  background-size: 100% 40px;
+  color: #fff;
+  font-size: 16px;
+  text-shadow: #22a7bc 1px 0 0, #22a7bc 0 1px 0, #22a7bc -1px 0 0, #22a7bc 0 -1px 0;
+  line-height: 32px;
+}
+.wish_gift .contribution_value {
+  line-height: 40px;
+  margin-top: 80px;
+}
+/* 主播成就奖 */
+.achievement {
+  margin-top: 16px;
+  padding: 12px 0;
+}
+.achievement h1 {
+  display: inline-block;
+  padding: 2px 40px;
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  color: #f6406c;
+}
+.achievement h1:before, .achievement h1:after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 12px;
+  background: url(../img/red_heart.png) no-repeat;
+  background-size: 14px 12px;
+  top: 50%;
+  margin-top: -4px;
+}
+.achievement h1:before {
+  left: 5%;
+}
+.achievement h1:after {
+  right: 5%;
+}
+.achievement .achievement_name {
+  width: 50%;
+  margin: 16px;
+  padding-bottom: 40%;
+}
+.achievement .achievement_name:nth-child(1) {
+  margin-left: 8px;
+}
+.achievement .achievement_name:nth-last-child(1) {
+  margin-right: 8px;
+}
+.achievement .achievement_name .achievement_name_inside {
+  position:absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+/* 礼包兑换 */
+.gift_exchange {
+  margin-top: 24px;
+}
+.gift_exchange h1 {
+  padding: 2px 50px;
+}
+.gift_exchange h1:before {
+  left: 10%;
+}
+.gift_exchange h1:after {
+  right: 10%;
+}
+.gift_exchange .content p {
+  padding: 0 8px;
+  margin-top: 14px;
+  font-size: 13px;
+}
+.gift_exchange .gift_exchange_main {
+  margin-top: 16px;
+  padding: 24px 0 8px;
+  overflow: hidden;
+}
+.gift_exchange .gift_exchange_name {
+  float: left;
+  width: 26%;
+  margin: 2.5%;
+  padding-top: 26%;
+  margin-bottom: 72px;
+  position: relative;
+}
+.gift_exchange .gift_exchange_name .gift_badge {
+  width: 60%;
+  background-color: #538df8;
+  padding: 0 8px;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  font-size: 12px;
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform:translate(-50%,-50%);
+}
+.gift_exchange .gift_exchange_name:nth-child(3n+1) {
+  margin-left: 5%;
+}
+.gift_exchange .gift_exchange_name:nth-last-child(1) {
+  margin-right: 5%;
+}
+.gift_exchange .gift_exchange_name .gift_exchange_name_inside {
+  position:absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.gift_exchange_name .gift_exchange_children {
+  color: #000;
+  margin-top: 12px;
+}
+.gift_exchange_name .gift_exchange_children .gift_exchange_button {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-top: 6px;
+  background: url(../img/gift_button.png) no-repeat;
+  background-size: 100% 40px;
+  color: #fff;
+  font-size: 16px;
+  text-shadow: #22a7bc 1px 0 0, #22a7bc 0 1px 0, #22a7bc -1px 0 0, #22a7bc 0 -1px 0;
+  line-height: 32px;
+}
+.gift_exchange_name .gift_exchange_children p {
+  margin: 0;
+  color: #be1102;
+}
+/* 更多福利 */
+.more_benefits {
+  margin-top: 24px;
+}
+.more {
+  margin-top: 12px;
+  padding: 10px 0;
+}
+.more .more_name {
+  width: 50%;
+  margin: 16px;
+  padding-bottom: 40%;
+}
+.more .more_name .more_name_inside {
+  position:absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+/* 显示tab */
+.tab_hide {
+  display: none;
+}
