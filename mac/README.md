@@ -58,4 +58,21 @@ echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> ~/.zshrc // 输出到
 
 #### 添加mysql到PATH  
 
-- PATH="$PATH":/usr/local/mysql/bin
+- PATH="$PATH":/usr/local/mysql/bin 
+
+#### 配置.bash_profile，重启终端后配置失效的问题  
+
+如果使用的终端是zsh，zsh加载的是 ~/.zshrc文件，而 ‘.zshrc’ 文件中并没有定义任务环境变量 
+
+- 1、终端中执行命令，打开.zshrc文件： 
+```
+open -e ~/.zshrc
+```
+- 2、在~/.zshrc文件最后，增加一行：
+```
+source ~/.bash_profile
+```
+- 3、执行命令，使其立即生效
+```
+source ~/.zshrc 
+```
